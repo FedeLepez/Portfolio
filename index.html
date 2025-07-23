@@ -2,113 +2,164 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fede Lepez - Portafolio Audiovisual</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Federico Lepez</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
+      font-family: Arial, sans-serif;
       background-color: #111;
-      color: #eee;
+      color: #d4c63a;
     }
-    header {
-      background-color: #1e1e1e;
-      padding: 2rem;
+
+    .hero {
+      background-color: #000;
+      padding: 40px;
       text-align: center;
+      position: relative;
     }
-    h1 {
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #1a1a1a;
+      width: 90%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .hero h1 {
+      font-size: 64px;
       margin: 0;
-      font-size: 2.5rem;
-      color: #f9c74f;
     }
-    p.slogan {
-      margin-top: 0.5rem;
-      font-style: italic;
-      color: #ccc;
+
+    .hero p {
+      margin: 10px 0 0;
+      font-size: 20px;
     }
-    .gallery {
+
+    .subtitulo {
+      background-color: #1a1a1a;
+      display: inline-block;
+      padding: 5px 10px;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .section.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .text-box {
+      max-width: 400px;
+      background-color: #1a1a1a;
+      padding: 20px;
+      color: #d4c63a;
+    }
+
+    .section h2 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: #d4c63a;
+      position: relative;
+      z-index: 2;
+    }
+
+    .images-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
     }
-    .item {
-      background-color: #222;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
-      transition: transform 0.3s;
-    }
-    .item:hover {
-      transform: scale(1.03);
-    }
-    .item img,
-    .item video {
+
+    .images-grid img {
       width: 100%;
-      display: block;
+      cursor: pointer;
+      border: 2px solid #333;
     }
-    .item .desc {
-      padding: 1rem;
+
+    .images-grid img:hover {
+      border-color: #d4c63a;
     }
+
     footer {
+      background-color: #000;
+      color: #d4c63a;
+      padding: 40px 20px;
       text-align: center;
-      padding: 2rem;
-      background-color: #1e1e1e;
-      font-size: 0.9rem;
-      color: #888;
+    }
+
+    footer a {
+      color: #d4c63a;
+      text-decoration: none;
+      margin: 0 10px;
     }
   </style>
 </head>
 <body>
+  <div class="hero">
+    <div class="subtitulo">Bienvenidx</div>
+    <h1>PORTFOLIO</h1>
+    <div class="subtitulo">Iluminador, VFX, Artista 3D</div>
+    <p>Federico Lepez</p>
+  </div>
 
-  <header>
-    <h1>Fede Lepez</h1>
-    <p class="slogan">Portafolio de trabajos audiovisuales</p>
-  </header>
+  <div class="section">
+    <div class="text-box">
+      <h2>MG1</h2>
+      Explicación sobre qué tratan las fotos y qué rol desempeñé en esta ocasión.
+    </div>
+    <div class="images-grid">
+      <a href="img1.jpg" target="_blank"><img src="img1.jpg" alt="img1"></a>
+      <a href="img2.jpg" target="_blank"><img src="img2.jpg" alt="img2"></a>
+      <a href="img3.jpg" target="_blank"><img src="img3.jpg" alt="img3"></a>
+      <a href="img4.jpg" target="_blank"><img src="img4.jpg" alt="img4"></a>
+    </div>
+  </div>
 
-  <main class="gallery">
-    <div class="item">
-      <video controls poster="thumbs/video1.jpg">
-        <source src="videos/luces-y-sombras.mp4" type="video/mp4">
-        Tu navegador no soporta el video.
+  <div class="section reverse">
+    <div class="text-box">
+      <h2>MG5</h2>
+      Explicación sobre qué tratan las fotos y qué rol desempeñé en esta ocasión.
+    </div>
+    <div class="images-grid">
+      <video controls width="100%">
+        <source src="video.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
       </video>
-      <div class="desc">
-        <h3>Luces y sombras</h3>
-        <p>Video ensayo sobre la relación entre luz y memoria emocional.</p>
-      </div>
     </div>
+  </div>
 
-    <div class="item">
-      <img src="fotos/foto1.jpg" alt="Fotografía de proyecto">
-      <div class="desc">
-        <h3>Retrato cotidiano</h3>
-        <p>Fotografía capturada durante el rodaje de “Instantes”.</p>
-      </div>
+  <div class="section">
+    <div class="text-box">
+      <h2>MG7</h2>
+      Explicación sobre qué tratan las fotos y qué rol desempeñé en esta ocasión.
     </div>
-
-    <div class="item">
-      <video controls poster="thumbs/video2.jpg">
-        <source src="videos/entrelineas.mp4" type="video/mp4">
-        Tu navegador no soporta el video.
-      </video>
-      <div class="desc">
-        <h3>Entre líneas</h3>
-        <p>Corto experimental sobre la introspección y el espacio.</p>
-      </div>
+    <div class="images-grid">
+      <a href="img6.jpg" target="_blank"><img src="img6.jpg" alt="img6"></a>
+      <a href="img7.jpg" target="_blank"><img src="img7.jpg" alt="img7"></a>
+      <a href="img8.jpg" target="_blank"><img src="img8.jpg" alt="img8"></a>
+      <a href="img9.jpg" target="_blank"><img src="img9.jpg" alt="img9"></a>
     </div>
-
-    <div class="item">
-      <img src="fotos/foto2.jpg" alt="Otra foto">
-      <div class="desc">
-        <h3>Silencios</h3>
-        <p>Ensayo visual sobre lo que no se dice, pero se muestra.</p>
-      </div>
-    </div>
-  </main>
+  </div>
 
   <footer>
-    © Fede Lepez 2025 · Contacto: fedelepez@gmail.com
+    <p>Contacto</p>
+    <p>
+      <a href="mailto:federicolepezcdm@gmail.com">📧 federicolepezcdm@gmail.com</a> |
+      <a href="https://instagram.com/f3de_lepez" target="_blank">📷 @f3de_lepez</a>
+    </p>
   </footer>
-
 </body>
 </html>
