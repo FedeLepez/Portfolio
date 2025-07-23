@@ -34,11 +34,15 @@
     .hero h1 {
       font-size: 64px;
       margin: 0;
+      position: relative;
+      z-index: 2;
     }
 
     .hero p {
       margin: 10px 0 0;
       font-size: 20px;
+      position: relative;
+      z-index: 2;
     }
 
     .subtitulo {
@@ -47,6 +51,8 @@
       padding: 5px 10px;
       margin-bottom: 20px;
       font-size: 18px;
+      position: relative;
+      z-index: 2;
     }
 
     .section {
@@ -68,20 +74,24 @@
       background-color: #1a1a1a;
       padding: 20px;
       color: #d4c63a;
+      flex: 1 1 300px;
     }
 
     .section h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
+      font-size: 64px;
       color: #d4c63a;
-      position: relative;
-      z-index: 2;
+      position: absolute;
+      top: -30px;
+      left: 20px;
+      z-index: 3;
     }
 
     .images-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
+      flex: 1 1 300px;
+      max-width: 400px;
     }
 
     .images-grid img {
@@ -115,15 +125,35 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.95);
       justify-content: center;
       align-items: center;
       z-index: 9999;
+      flex-direction: column;
     }
 
     .lightbox img {
       max-width: 90%;
-      max-height: 90%;
+      max-height: 80%;
+    }
+
+    .lightbox-controls {
+      margin-top: 20px;
+    }
+
+    .lightbox-controls button {
+      background: none;
+      border: 2px solid #d4c63a;
+      color: #d4c63a;
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .lightbox-controls button:hover {
+      background: #d4c63a;
+      color: #111;
     }
   </style>
 </head>
@@ -138,39 +168,36 @@
   <div class="section">
     <h2>ACA VA EL TITULO</h2>
     <div class="text-box">
-      Explicacion sobre que tratan las fotos y que rol desempenie en esta ocasion. Lorem ipsum dolor sit amet consectetur adipiscing elit id, vel ad ut tellus accumsan congue lectus sagittis, gravida praesent est rhoncus maecenas felis donec. Accumsan nec sed lacinia per facilisi mus iaculis.
+      Explicacion sobre que tratan las fotos y que rol desempeñé en esta ocasión.
     </div>
     <div class="images-grid">
-      <img src="img1.jpg" alt="img1" onclick="openLightbox(this.src)">
-      <img src="img2.jpg" alt="img2" onclick="openLightbox(this.src)">
-      <img src="img3.jpg" alt="img3" onclick="openLightbox(this.src)">
-      <img src="img4.jpg" alt="img4" onclick="openLightbox(this.src)">
+      <img src="img1.jpg" alt="img1" onclick="openLightbox(0)">
+      <img src="img2.jpg" alt="img2" onclick="openLightbox(1)">
+      <img src="img3.jpg" alt="img3" onclick="openLightbox(2)">
+      <img src="img4.jpg" alt="img4" onclick="openLightbox(3)">
     </div>
   </div>
 
   <div class="section reverse">
     <h2>ACA VA EL TITULO</h2>
     <div class="text-box">
-      Explicacion sobre que tratan las fotos y que rol desempenie en esta ocasion. Lorem ipsum dolor sit amet consectetur adipiscing elit id, vel ad ut tellus accumsan congue lectus sagittis, gravida praesent est rhoncus maecenas felis donec. Accumsan nec sed lacinia per facilisi mus iaculis.
+      Explicacion sobre que tratan las fotos y que rol desempeñé en esta ocasión.
     </div>
     <div class="images-grid">
-      <video controls>
-        <source src="video.mp4" type="video/mp4">
-        Tu navegador no soporta la reproducción de video.
-      </video>
+      <img src="video.mp4" alt="video" onclick="openLightbox(4)">
     </div>
   </div>
 
   <div class="section">
     <h2>ACA VA EL TITULO</h2>
     <div class="text-box">
-      Explicacion sobre que tratan las fotos y que rol desempenie en esta ocasion. Lorem ipsum dolor sit amet consectetur adipiscing elit id, vel ad ut tellus accumsan congue lectus sagittis, gravida praesent est rhoncus maecenas felis donec. Accumsan nec sed lacinia per facilisi mus iaculis.
+      Explicacion sobre que tratan las fotos y que rol desempeñé en esta ocasión.
     </div>
     <div class="images-grid">
-      <img src="img6.jpg" alt="img6" onclick="openLightbox(this.src)">
-      <img src="img7.jpg" alt="img7" onclick="openLightbox(this.src)">
-      <img src="img8.jpg" alt="img8" onclick="openLightbox(this.src)">
-      <img src="img9.jpg" alt="img9" onclick="openLightbox(this.src)">
+      <img src="img6.jpg" alt="img6" onclick="openLightbox(5)">
+      <img src="img7.jpg" alt="img7" onclick="openLightbox(6)">
+      <img src="img8.jpg" alt="img8" onclick="openLightbox(7)">
+      <img src="img9.jpg" alt="img9" onclick="openLightbox(8)">
     </div>
   </div>
 
@@ -182,18 +209,43 @@
     </p>
   </footer>
 
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox" id="lightbox">
     <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-controls">
+      <button onclick="prevImage()">Anterior</button>
+      <button onclick="closeLightbox()">Cerrar</button>
+      <button onclick="nextImage()">Siguiente</button>
+    </div>
   </div>
 
   <script>
-    function openLightbox(src) {
-      document.getElementById('lightbox-img').src = src;
+    const imageSources = [
+      'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg',
+      'video.mp4',
+      'img6.jpg', 'img7.jpg', 'img8.jpg', 'img9.jpg'
+    ];
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      const img = document.getElementById('lightbox-img');
+      img.src = imageSources[currentIndex];
+      img.tagName === 'VIDEO' ? img.load() : null;
       document.getElementById('lightbox').style.display = 'flex';
     }
 
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % imageSources.length;
+      document.getElementById('lightbox-img').src = imageSources[currentIndex];
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
+      document.getElementById('lightbox-img').src = imageSources[currentIndex];
     }
   </script>
 </body>
