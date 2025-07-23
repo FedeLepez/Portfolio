@@ -56,6 +56,7 @@
       padding: 40px 20px;
       gap: 40px;
       align-items: center;
+      position: relative;
     }
 
     .section.reverse {
@@ -70,8 +71,8 @@
     }
 
     .section h2 {
-      font-size: 48px;
-      margin-bottom: 10px;
+      font-size: 36px;
+      margin-bottom: 20px;
       color: #d4c63a;
       position: relative;
       z-index: 2;
@@ -105,36 +106,55 @@
       text-decoration: none;
       margin: 0 10px;
     }
+
+    /* Lightbox Styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
   </style>
 </head>
 <body>
   <div class="hero">
-    <div class="subtitulo">Bienvenidx</div>
+    <div class="subtitulo">Bienvenidx a mi</div>
     <h1>PORTFOLIO</h1>
-    <div class="subtitulo">Iluminador, VFX, Artista 3D</div>
     <p>Federico Lepez</p>
+    <div class="subtitulo">Iluminador, VFX, Artista 3D</div>
   </div>
 
   <div class="section">
+    <h2>ACA VA EL TITULO</h2>
     <div class="text-box">
-      <h2>MG1</h2>
-      Explicación sobre qué tratan las fotos y qué rol desempeñé en esta ocasión.
+      Explicacion sobre que tratan las fotos y que rol desempenie en esta ocasion. Lorem ipsum dolor sit amet consectetur adipiscing elit id, vel ad ut tellus accumsan congue lectus sagittis, gravida praesent est rhoncus maecenas felis donec. Accumsan nec sed lacinia per facilisi mus iaculis.
     </div>
     <div class="images-grid">
-      <a href="img1.jpg" target="_blank"><img src="img1.jpg" alt="img1"></a>
-      <a href="img2.jpg" target="_blank"><img src="img2.jpg" alt="img2"></a>
-      <a href="img3.jpg" target="_blank"><img src="img3.jpg" alt="img3"></a>
-      <a href="img4.jpg" target="_blank"><img src="img4.jpg" alt="img4"></a>
+      <img src="img1.jpg" alt="img1" onclick="openLightbox(this.src)">
+      <img src="img2.jpg" alt="img2" onclick="openLightbox(this.src)">
+      <img src="img3.jpg" alt="img3" onclick="openLightbox(this.src)">
+      <img src="img4.jpg" alt="img4" onclick="openLightbox(this.src)">
     </div>
   </div>
 
   <div class="section reverse">
+    <h2>ACA VA EL TITULO</h2>
     <div class="text-box">
-      <h2>MG5</h2>
-      Explicación sobre qué tratan las fotos y qué rol desempeñé en esta ocasión.
+      Explicacion sobre que tratan las fotos y que rol desempenie en esta ocasion. Lorem ipsum dolor sit amet consectetur adipiscing elit id, vel ad ut tellus accumsan congue lectus sagittis, gravida praesent est rhoncus maecenas felis donec. Accumsan nec sed lacinia per facilisi mus iaculis.
     </div>
     <div class="images-grid">
-      <video controls width="100%">
+      <video controls>
         <source src="video.mp4" type="video/mp4">
         Tu navegador no soporta la reproducción de video.
       </video>
@@ -142,15 +162,15 @@
   </div>
 
   <div class="section">
+    <h2>ACA VA EL TITULO</h2>
     <div class="text-box">
-      <h2>MG7</h2>
-      Explicación sobre qué tratan las fotos y qué rol desempeñé en esta ocasión.
+      Explicacion sobre que tratan las fotos y que rol desempenie en esta ocasion. Lorem ipsum dolor sit amet consectetur adipiscing elit id, vel ad ut tellus accumsan congue lectus sagittis, gravida praesent est rhoncus maecenas felis donec. Accumsan nec sed lacinia per facilisi mus iaculis.
     </div>
     <div class="images-grid">
-      <a href="img6.jpg" target="_blank"><img src="img6.jpg" alt="img6"></a>
-      <a href="img7.jpg" target="_blank"><img src="img7.jpg" alt="img7"></a>
-      <a href="img8.jpg" target="_blank"><img src="img8.jpg" alt="img8"></a>
-      <a href="img9.jpg" target="_blank"><img src="img9.jpg" alt="img9"></a>
+      <img src="img6.jpg" alt="img6" onclick="openLightbox(this.src)">
+      <img src="img7.jpg" alt="img7" onclick="openLightbox(this.src)">
+      <img src="img8.jpg" alt="img8" onclick="openLightbox(this.src)">
+      <img src="img9.jpg" alt="img9" onclick="openLightbox(this.src)">
     </div>
   </div>
 
@@ -161,5 +181,20 @@
       <a href="https://instagram.com/f3de_lepez" target="_blank">📷 @f3de_lepez</a>
     </p>
   </footer>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
