@@ -162,7 +162,7 @@
       background: #d4c63a;
       color: #111;
     }
-
+  
     @media (max-width: 768px) {
       .hero {
         padding: 80px 20px;
@@ -217,7 +217,7 @@
         font-size: 14px;
       }
     }
-  </style>
+</style>
 </head>
 <body>
   <div class="hero">
@@ -228,38 +228,42 @@
   </div>
 
   <div class="section">
-    <h2>ACA VA EL TITULO</h2>
+    <h2>UNA ARAÑA</h2>
     <div class="text-box">
-      Explicacion sobre que tratan las fotos y que rol desempeñé en esta ocasión.
+      En esta sesion de fotos se explora la confrontacion con uno mismo, el proyectar el problema en otra cosa, el estar perseguido por sus propios pensamientos.
       <div class="rol-text">Dirección de Fotografía</div>
     </div>
     <div class="images-grid">
       <img src="img1.jpg" alt="img1" onclick="openLightbox(0)">
       <img src="img2.jpg" alt="img2" onclick="openLightbox(1)">
-    </div>
-  </div>
-
-  <div class="section reverse">
-    <h2>ACA VA EL TITULO</h2>
-    <div class="text-box">
-      Explicacion sobre que tratan las fotos y que rol desempeñé en esta ocasión.
-      <div class="rol-text">Iluminación</div>
-    </div>
-    <div class="images-grid">
       <img src="img3.jpg" alt="img3" onclick="openLightbox(2)">
       <img src="img4.jpg" alt="img4" onclick="openLightbox(3)">
     </div>
   </div>
 
-  <div class="section">
-    <h2>ACA VA EL TITULO</h2>
+  <div class="section reverse">
+    <h2>LA HUIDA</h2>
     <div class="text-box">
-      Explicacion sobre que tratan las fotos y que rol desempeñé en esta ocasión.
-      <div class="rol-text">Composición y VFX</div>
+      Fotos con storytelling visual replicando el estilo cinematografico del Neo-noir.
+      <div class="rol-text">Iluminación</div>
     </div>
     <div class="images-grid">
-      <img src="img5.jpg" alt="img5" onclick="openLightbox(4)">
-      <img src="img6.jpg" alt="img6" onclick="openLightbox(5)">
+      <img src="img9.jpeg" alt="img9" onclick="openLightbox(8)">
+      <img src="img10.jpeg" alt="img10" onclick="openLightbox(9)">
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>MOMENTOS</h2>
+    <div class="text-box">
+      Esta es una serie de renders que hice para representar como me sentia en diferentes momentos del año. 
+      <div class="rol-text">Artista 3D</div>
+    </div>
+    <div class="images-grid">
+      <img src="img5.png" alt="img5" onclick="openLightbox(4)">
+      <img src="img6.png" alt="img6" onclick="openLightbox(5)">
+      <img src="img7.png" alt="img7" onclick="openLightbox(6)">
+      <img src="img8.png" alt="img8" onclick="openLightbox(7)">
     </div>
   </div>
 
@@ -274,16 +278,17 @@
   <div class="lightbox" id="lightbox">
     <img id="lightbox-img" src="" alt="">
     <div class="lightbox-controls">
-      <button onclick="prevImage()">Anterior</button>
-      <button onclick="closeLightbox()">Cerrar</button>
-      <button onclick="nextImage()">Siguiente</button>
+      <button onclick="prevImage()"><--</button>
+      <button onclick="closeLightbox()">X</button>
+      <button onclick="nextImage()">--></button>
     </div>
   </div>
 
   <script>
     const imageSources = [
       'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg',
-      'img5.jpg', 'img6.jpg'
+      'img5.png', 'img6.png', 'img7.png', 'img8.png',
+      'img9.jpeg', 'img10.jpeg'
     ];
     let currentIndex = 0;
 
