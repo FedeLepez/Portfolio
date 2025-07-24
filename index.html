@@ -14,7 +14,7 @@
 
     .hero {
       background-color: #000;
-      padding: 40px;
+      padding: 120px 40px;
       text-align: center;
       position: relative;
     }
@@ -32,7 +32,7 @@
     }
 
     .hero h1 {
-      font-size: 64px;
+      font-size: 72px;
       margin: 0;
       position: relative;
       z-index: 2;
@@ -40,7 +40,7 @@
 
     .hero p {
       margin: 10px 0 0;
-      font-size: 20px;
+      font-size: 22px;
       position: relative;
       z-index: 2;
     }
@@ -77,11 +77,17 @@
       flex: 1 1 300px;
     }
 
+    .rol-text {
+      margin-top: 10px;
+      font-style: italic;
+      color: #bbb;
+    }
+
     .section h2 {
       font-size: 64px;
       color: #d4c63a;
       position: absolute;
-      top: -30px;
+      top: -60px;
       left: 20px;
       z-index: 3;
     }
@@ -91,11 +97,13 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       flex: 1 1 300px;
-      max-width: 400px;
+      max-width: 300px;
     }
 
     .images-grid img {
       width: 100%;
+      height: auto;
+      object-fit: cover;
       cursor: pointer;
       border: 2px solid #333;
     }
@@ -117,7 +125,6 @@
       margin: 0 10px;
     }
 
-    /* Lightbox Styles */
     .lightbox {
       display: none;
       position: fixed;
@@ -169,12 +176,11 @@
     <h2>ACA VA EL TITULO</h2>
     <div class="text-box">
       Explicacion sobre que tratan las fotos y que rol desempeñé en esta ocasión.
+      <div class="rol-text">Dirección de Fotografía</div>
     </div>
     <div class="images-grid">
       <img src="img1.jpg" alt="img1" onclick="openLightbox(0)">
       <img src="img2.jpg" alt="img2" onclick="openLightbox(1)">
-      <img src="img3.jpg" alt="img3" onclick="openLightbox(2)">
-      <img src="img4.jpg" alt="img4" onclick="openLightbox(3)">
     </div>
   </div>
 
@@ -182,9 +188,11 @@
     <h2>ACA VA EL TITULO</h2>
     <div class="text-box">
       Explicacion sobre que tratan las fotos y que rol desempeñé en esta ocasión.
+      <div class="rol-text">Iluminación</div>
     </div>
     <div class="images-grid">
-      <img src="video.mp4" alt="video" onclick="openLightbox(4)">
+      <img src="img3.jpg" alt="img3" onclick="openLightbox(2)">
+      <img src="img4.jpg" alt="img4" onclick="openLightbox(3)">
     </div>
   </div>
 
@@ -192,12 +200,11 @@
     <h2>ACA VA EL TITULO</h2>
     <div class="text-box">
       Explicacion sobre que tratan las fotos y que rol desempeñé en esta ocasión.
+      <div class="rol-text">Composición y VFX</div>
     </div>
     <div class="images-grid">
+      <img src="img5.jpg" alt="img5" onclick="openLightbox(4)">
       <img src="img6.jpg" alt="img6" onclick="openLightbox(5)">
-      <img src="img7.jpg" alt="img7" onclick="openLightbox(6)">
-      <img src="img8.jpg" alt="img8" onclick="openLightbox(7)">
-      <img src="img9.jpg" alt="img9" onclick="openLightbox(8)">
     </div>
   </div>
 
@@ -221,8 +228,7 @@
   <script>
     const imageSources = [
       'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg',
-      'video.mp4',
-      'img6.jpg', 'img7.jpg', 'img8.jpg', 'img9.jpg'
+      'img5.jpg', 'img6.jpg'
     ];
     let currentIndex = 0;
 
@@ -230,7 +236,6 @@
       currentIndex = index;
       const img = document.getElementById('lightbox-img');
       img.src = imageSources[currentIndex];
-      img.tagName === 'VIDEO' ? img.load() : null;
       document.getElementById('lightbox').style.display = 'flex';
     }
 
