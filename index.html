@@ -266,7 +266,23 @@
         margin: 0 0 10px 0 !important;
         top: auto !important;     
         left: auto !important;   
-  }
+      }
+        
+      .images-grid,
+      .galeria,
+      .text-box {
+        flex: none !important;      
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .images-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .galeria {
+        grid-template-columns: 1fr;
+      }  
         
       .lightbox img {
         max-width: 100%;
