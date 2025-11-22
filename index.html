@@ -112,6 +112,26 @@
       border-color: #d4c63a;
     }
 
+   .galeria {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 10px; 
+     flex: 1 1 500px;
+      max-width: 500px;
+}
+
+    .galeria img {
+     width: 100%;
+      height: auto;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid #333;
+    }
+
+    .images-grid img:hover {
+      border-color: #d4c63a;
+    }
+
     footer {
       background-color: #000;
       color: #d4c63a;
@@ -271,10 +291,10 @@
 <div class="section">
   <h2>TERMINAL</h2>
   <div class="text-box">
-    Sesion de fotos hecha en la terminal de ómnibus Madero, reflejando la espera y las vibras de la noche
+    Sesion de fotos hecha en la terminal de ómnibus Madero, reflejando la espera y las vibras de la noche.
     <div class="rol-text">Dirección de Fotografía</div>
   </div>
-  <div class="images-grid">
+  <div class="galeria">
     <img src="terminal1.jpg" alt="terminal1" onclick="openLightbox(10)">
     <img src="terminal2.jpg" alt="terminal2" onclick="openLightbox(11)">
     <img src="terminal3.jpg" alt="terminal3" onclick="openLightbox(12)">
@@ -287,7 +307,7 @@
 <div class="section reverse">
   <h2>JOTA</h2>
   <div class="text-box">
-    Cortometraje hecho para tesis, en el que me toco participar como Gaffer, adecuando las luces a una iluminacion mas calida y natural
+    Cortometraje hecho para tesis, en el que me toco participar como Gaffer, adecuando las luces a una iluminacion mas calida y natural.
     <div class="rol-text">Gaffer</div>
   </div>
   <div class="images-grid">
