@@ -239,7 +239,28 @@
       .images-grid img {
         border-width: 1px;
       }
+      .section {
+        display: block !important;   /* 🔥 Saca flex + wrap + spacing raro */
+        padding: 20px 10px !important;
+      }
 
+      .section h2 {
+        position: static !important;
+        margin: 0 0 15px 0 !important;
+        top: auto !important;
+        left: auto !important;
+      }
+
+      .text-box {
+        max-width: 100% !important;
+        margin-bottom: 20px !important;
+      }
+
+      .images-grid,
+      .galeria {
+        margin-top: 0 !important;
+      }
+        
       .lightbox img {
         max-width: 100%;
         max-height: 60%;
