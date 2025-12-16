@@ -241,7 +241,20 @@
   margin: 0 0 15px auto;
   width: fit-content;
 }
+   
+.head-sprite {
+  width: 280px;
+  margin: 30px auto 20px;
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+}
 
+.head-sprite img {
+  width: 100%;
+  display: block;
+}
+   
   .text-box {
     max-width: 100% !important;
     padding: 15px !important;
@@ -283,6 +296,11 @@
   <div class="hero">
     <div class="subtitulo">Bienvenidx a mi</div>
     <h1>PORTFOLIO</h1>
+
+    <div class="head-sprite">
+    <img src="images/head/head-3.png" alt="Cabeza 3D" id="headImage">
+  </div>
+
     <p>Federico Lepez Pieretti</p>
     <div class="subtitulo">Gaffer, Dirección de Fotografía, Artista 3D</div>
   </div>
@@ -432,6 +450,22 @@
       currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
       document.getElementById('lightbox-img').src = imageSources[currentIndex];
     }
+
+  const head = document.getElementById("headImage");
+  const totalFrames = 5;
+
+  if (head) {
+    document.addEventListener("mousemove", (e) => {
+      const x = e.clientX / window.innerWidth;
+      const frame = Math.min(
+        totalFrames,
+        Math.max(1, Math.ceil(x * totalFrames))
+      );
+
+      head.src = `images/head/head-${frame}.png`;
+    });
+  }
+
   </script>
 </body>
 </html>
