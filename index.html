@@ -298,7 +298,7 @@
     <h1>PORTFOLIO</h1>
 
     <div class="head-sprite">
-    <img src="images/head/head-3.png" alt="Cabeza 3D" id="headImage">
+    <img src="head-3.png" alt="Cabeza 3D" id="headImage">
   </div>
 
     <p>Federico Lepez Pieretti</p>
@@ -451,7 +451,7 @@
       document.getElementById('lightbox-img').src = imageSources[currentIndex];
     }
 
-  const head = document.getElementById("headImage");
+   const head = document.getElementById("headImage");
   const totalFrames = 5;
 
   if (head) {
@@ -462,7 +462,7 @@
         Math.max(1, Math.ceil(x * totalFrames))
       );
 
-      head.src = `images/head/head-${frame}.png`;
+      head.src = `head-${frame}.png`;
     });
   }
 
