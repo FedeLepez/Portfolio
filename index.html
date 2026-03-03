@@ -26,27 +26,30 @@
   position: sticky;
   top: 0;
   background: #000;
-  padding: 15px;
+  padding: 10px 0;
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  z-index: 999;
+  gap: 10px;
+  overflow-x: auto;     
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;   
   border-bottom: 1px solid #222;
 }
 
+.filtro-menu::-webkit-scrollbar {
+  display: none;             
+}
+
 .filtro-menu button {
+  flex: 0 0 auto;       
   background: none;
   border: 2px solid #d4c63a;
   color: #d4c63a;
-  padding: 8px 16px;
+  padding: 6px 14px;
+  font-size: 13px;
   cursor: pointer;
-  font-size: 14px;
   transition: 0.3s;
-}
-
-.filtro-menu button:hover {
-  background: #d4c63a;
-  color: #111;
 }
 
     .hero {
@@ -279,12 +282,6 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
-@media (max-width: 768px) {
-  .mosaico {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
   
  @media (max-width: 768px) {
 
@@ -301,7 +298,7 @@
   }
 
   .subtitulo {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .section {
@@ -329,6 +326,10 @@
     left: auto !important;
     padding: 0 !important;
 }
+
+.mosaico {
+    grid-template-columns: repeat(2, 1fr);
+  }
    
 .head-sprite {
   width: 100vw;             
@@ -370,6 +371,15 @@
     margin-left: 0;
   }
 
+.filtro-menu {
+  justify-content: center;
+}
+
+.filtro-menu button {
+  font-size: 12px;
+  padding: 5px 10px;
+}
+   
   .lightbox img {
     max-width: 100%;
     max-height: 60%;
@@ -624,22 +634,23 @@
 
     function filtrarSecciones(rol) {
   document.getElementById('pagina-galeria').style.display = 'none';
+  document.querySelector('.hero').style.display = 'block';
 
   const secciones = document.querySelectorAll('.section');
 
   secciones.forEach(seccion => {
     if (rol === 'inicio') {
-      seccion.style.display = 'flex';
+      seccion.style.display = '';
     } else {
       if (seccion.dataset.rol === rol) {
-        seccion.style.display = 'flex';
+        seccion.style.display = '';
       } else {
         seccion.style.display = 'none';
       }
     }
   });
 }
-
+    
 function mostrarGaleria() {
   const galeriaDiv = document.getElementById('pagina-galeria');
   const mosaico = document.querySelector('.mosaico');
