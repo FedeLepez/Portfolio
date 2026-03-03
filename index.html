@@ -269,8 +269,8 @@
 .mosaico img,
 .mosaico video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
 }
 
@@ -379,6 +379,24 @@
     padding: 8px 16px;
     font-size: 14px;
   }
+}
+
+.video-container {
+  flex: 1 1 600px;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  border: 2px solid #333;
+}
+
+.video-container video:hover {
+  border-color: #d4c63a;
 }
     
 </style>
@@ -512,7 +530,8 @@
     Visualizer 3D para el EP Raiser Network de SixUp, donde empleé modelado, rigging, animación y edición de video.
     <div class="rol-text">Artista 3D</div>
   </div>
-  <video controls style="max-width:900px; width:100%; height:auto;">
+ <div class="video-container">
+  <video controls>
     <source src="raiser.mp4" type="video/mp4">
     Tu navegador no soporta video HTML5.
   </video>
@@ -629,44 +648,25 @@ function mostrarGaleria() {
 
   mosaico.innerHTML = '';
 
+  let index = 0;
+
   document.querySelectorAll('.images-grid img, .galeria img').forEach(img => {
     const clone = img.cloneNode(true);
-    clone.removeAttribute('onclick');
+    clone.setAttribute('onclick', `openLightbox(${index})`);
     mosaico.appendChild(clone);
+    index++;
   });
 
   const video = document.querySelector('video');
   if (video) {
     const cloneVideo = video.cloneNode(true);
+    cloneVideo.style.cursor = "default";
     mosaico.appendChild(cloneVideo);
   }
 
   galeriaDiv.style.display = 'block';
 }
-
-function mostrarGaleria() {
-  const galeriaDiv = document.getElementById('pagina-galeria');
-  const mosaico = document.querySelector('.mosaico');
-  const secciones = document.querySelectorAll('.section');
-
-  secciones.forEach(seccion => seccion.style.display = 'none');
-
-  mosaico.innerHTML = '';
-
-  document.querySelectorAll('.images-grid img, .galeria img').forEach(img => {
-    const clone = img.cloneNode(true);
-    clone.removeAttribute('onclick');
-    mosaico.appendChild(clone);
-  });
-
-  const video = document.querySelector('video');
-  if (video) {
-    const cloneVideo = video.cloneNode(true);
-    mosaico.appendChild(cloneVideo);
-  }
-
-  galeriaDiv.style.display = 'block';
-}
+    
   </script>
 </body>
 </html>
