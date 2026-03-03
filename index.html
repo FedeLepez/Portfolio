@@ -109,14 +109,16 @@
 }
 
     .section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 40px 20px;
-      gap: 40px;
-      align-items: center;
-      position: relative;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 60px 40px;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+}
 
     .section.reverse {
       flex-direction: row-reverse;
@@ -161,12 +163,13 @@
   }
 
     .images-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      flex: 1 1 500px;
-      max-width: 900px;
-    }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  flex: 1 1 600px;
+  width: 100%;
+  max-width: 1000px;
+}
 
     .images-grid img {
       width: 100%;
@@ -181,11 +184,12 @@
     }
 
    .galeria {
-     display: grid;
-     grid-template-columns: repeat(3, 1fr);
-     gap: 10px; 
-     flex: 1 1 500px;
-      max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  flex: 1 1 600px;
+  width: 100%;
+  max-width: 1000px;
 }
 
     .galeria img {
@@ -255,6 +259,32 @@
       background: #d4c63a;
       color: #111;
     }
+
+    .mosaico {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.mosaico img,
+.mosaico video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 1200px) {
+  .mosaico {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .mosaico {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
   
  @media (max-width: 768px) {
 
@@ -356,11 +386,12 @@
 <body>
   
   <div class="filtro-menu">
-  <button onclick="filtrarSecciones('todo')">Todo</button>
+  <button onclick="filtrarSecciones('inicio')">Inicio</button>
   <button onclick="filtrarSecciones('direccionfoto')">Dirección de Fotografía</button>
     <button onclick="filtrarSecciones('fotografo')">Fotógrafo</button>
   <button onclick="filtrarSecciones('gaffer')">Gaffer</button>
   <button onclick="filtrarSecciones('3d')">Artista 3D</button>
+    <button onclick="mostrarGaleria()">Galería</button>
 </div>
   
   <div class="hero">
@@ -500,6 +531,10 @@
       <img src="img8.png" alt="img8" onclick="openLightbox(33)">
     </div>
   </div>
+
+  <div id="pagina-galeria" style="display:none;">
+  <div class="mosaico"></div>
+</div>
   
   <footer>
     <p>Contacto</p>
@@ -568,10 +603,12 @@
   }
 
     function filtrarSecciones(rol) {
+  document.getElementById('pagina-galeria').style.display = 'none';
+
   const secciones = document.querySelectorAll('.section');
 
   secciones.forEach(seccion => {
-    if (rol === 'todo') {
+    if (rol === 'inicio') {
       seccion.style.display = 'flex';
     } else {
       if (seccion.dataset.rol === rol) {
@@ -581,6 +618,54 @@
       }
     }
   });
+}
+
+function mostrarGaleria() {
+  const galeriaDiv = document.getElementById('pagina-galeria');
+  const mosaico = document.querySelector('.mosaico');
+  const secciones = document.querySelectorAll('.section');
+
+  secciones.forEach(seccion => seccion.style.display = 'none');
+
+  mosaico.innerHTML = '';
+
+  document.querySelectorAll('.images-grid img, .galeria img').forEach(img => {
+    const clone = img.cloneNode(true);
+    clone.removeAttribute('onclick');
+    mosaico.appendChild(clone);
+  });
+
+  const video = document.querySelector('video');
+  if (video) {
+    const cloneVideo = video.cloneNode(true);
+    mosaico.appendChild(cloneVideo);
+  }
+
+  galeriaDiv.style.display = 'block';
+}
+
+function mostrarGaleria() {
+  const galeriaDiv = document.getElementById('pagina-galeria');
+  const mosaico = document.querySelector('.mosaico');
+  const secciones = document.querySelectorAll('.section');
+
+  secciones.forEach(seccion => seccion.style.display = 'none');
+
+  mosaico.innerHTML = '';
+
+  document.querySelectorAll('.images-grid img, .galeria img').forEach(img => {
+    const clone = img.cloneNode(true);
+    clone.removeAttribute('onclick');
+    mosaico.appendChild(clone);
+  });
+
+  const video = document.querySelector('video');
+  if (video) {
+    const cloneVideo = video.cloneNode(true);
+    mosaico.appendChild(cloneVideo);
+  }
+
+  galeriaDiv.style.display = 'block';
 }
   </script>
 </body>
