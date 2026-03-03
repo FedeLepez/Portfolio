@@ -22,6 +22,33 @@
       color: #d4c63a;
     }
 
+    .filtro-menu {
+  position: sticky;
+  top: 0;
+  background: #000;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  z-index: 999;
+  border-bottom: 1px solid #222;
+}
+
+.filtro-menu button {
+  background: none;
+  border: 2px solid #d4c63a;
+  color: #d4c63a;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.filtro-menu button:hover {
+  background: #d4c63a;
+  color: #111;
+}
+
     .hero {
       background-color: #000;
       padding: 120px 40px;
@@ -327,6 +354,15 @@
 </style>
 </head>
 <body>
+  
+  <div class="filtro-menu">
+  <button onclick="filtrarSecciones('todo')">Todo</button>
+  <button onclick="filtrarSecciones('direccionfoto')">Dirección de Fotografía</button>
+  <button onclick="filtrarSecciones('gaffer')">Gaffer</button>
+  <button onclick="filtrarSecciones('3d')">Artista 3D</button>
+  <button onclick="filtrarSecciones('fotografo')">Fotógrafo</button>
+</div>
+  
   <div class="hero">
     <div class="subtitulo">Bienvenidx a mi</div>
     <h1>PORTFOLIO</h1>
@@ -339,7 +375,7 @@
     <div class="subtitulo">Gaffer, Dirección de Fotografía, Artista 3D</div>
   </div>
 
-  <div class="section">
+  <div class="section" data-rol="fotografo">
     <h3>UNA ARAÑA</h3>
     <div class="text-box">
       En esta sesion de fotos se explora la persecución y la confrontación con uno mismo.
@@ -353,7 +389,7 @@
     </div>
   </div>
 
-  <div class="section reverse">
+  <div class="section reverse" data-rol="fotografo"> 
     <h2>LA HUIDA</h2>
     <div class="text-box" style="margin-right: auto;">
       Fotos con storytelling visual replicando el estilo cinematografico del Neo-noir.
@@ -365,7 +401,7 @@
     </div>
   </div>
 
-  <div class="section">
+  <div class="section" data-rol="fotografo">
   <h3>TERMINAL</h3>
   <div class="text-box">
     Sesion de fotos hecha en la terminal de ómnibus Madero, reflejando la espera y las vibras de la noche.
@@ -381,7 +417,7 @@
   </div>
 </div>
 
-<div class="section reverse">
+<div class="section reverse" data-rol="gaffer">
   <h2>JOTA</h2>
   <div class="text-box" style="margin-right: auto;">
     Cortometraje dirigido por Lucas Delle Donne, basado en el libro Macario de Juan Rulfo. Me tocó participar como gaffer, adecuando la iluminación a una estética más cálida y natural.
@@ -395,7 +431,7 @@
   </div>
 </div>
 
-   <div class="section">
+   <div class="section" data-rol="direccionfoto">>
     <h3>EL GRAN CALIBÁN</h3>
     <div class="text-box">
       Entrevista dirigida por Santiago Palacios Acosta sobre El Gran Calibán, mago y excombatiente de Malvinas. La luz adopta un caracter teatral, mientras que la oscuridad y los encuadres vacios representan la desolación en Malvinas. 
@@ -409,7 +445,7 @@
     </div>
   </div>
   
-   <div class="section reverse">
+   <div class="section reverse" data-rol="3d">
   <h2>RAISER NETWORK</h2>
   <div class="text-box" style="margin-right: auto;">
     Visualizer 3D para el EP Raiser Network de SixUp, donde empleé modelado, rigging, animación y edición de video.
@@ -421,7 +457,7 @@
   </video>
 </div>
   
-  <div class="section">
+  <div class="section" data-rol="3d">
     <h3>MOMENTOS</h3>
     <div class="text-box">
       Esta es una serie de renders que hice para representar como me sentia en diferentes momentos del año. 
@@ -500,6 +536,21 @@
     });
   }
 
+    function filtrarSecciones(rol) {
+  const secciones = document.querySelectorAll('.section');
+
+  secciones.forEach(seccion => {
+    if (rol === 'todo') {
+      seccion.style.display = 'flex';
+    } else {
+      if (seccion.dataset.rol === rol) {
+        seccion.style.display = 'flex';
+      } else {
+        seccion.style.display = 'none';
+      }
+    }
+  });
+}
   </script>
 </body>
 </html>
