@@ -302,11 +302,10 @@
   }
 
   .section {
-    display: block !important;
-    padding: 20px 10px !important;
-    margin: 0 !important;
-  }
-
+  display: block;
+  padding: 20px 10px;
+  margin: 0;
+}
   .section h2 {
     font-size: 36px;
     position: static !important;
@@ -633,22 +632,22 @@
   }
 
     function filtrarSecciones(rol) {
-  document.getElementById('pagina-galeria').style.display = 'none';
-  document.querySelector('.hero').style.display = 'block';
-
+  const galeria = document.getElementById('pagina-galeria');
+  const hero = document.querySelector('.hero');
   const secciones = document.querySelectorAll('.section');
 
+  galeria.style.display = 'none';
+  hero.style.display = 'block';
+
   secciones.forEach(seccion => {
-    if (rol === 'inicio') {
+    if (rol === 'inicio' || seccion.dataset.rol === rol) {
       seccion.style.display = '';
     } else {
-      if (seccion.dataset.rol === rol) {
-        seccion.style.display = '';
-      } else {
-        seccion.style.display = 'none';
-      }
+      seccion.style.display = 'none';
     }
   });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
     
 function mostrarGaleria() {
