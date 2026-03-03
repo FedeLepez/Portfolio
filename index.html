@@ -277,6 +277,18 @@
   display: block;
 }
 
+.mosaico img,
+.mosaico video {
+  border: 2px solid #333;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.mosaico img:hover,
+.mosaico video:hover {
+  border-color: #d4c63a;
+}
+
 @media (max-width: 1200px) {
   .mosaico {
     grid-template-columns: repeat(3, 1fr);
@@ -371,7 +383,7 @@
   }
 
 .filtro-menu {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .filtro-menu button {
